@@ -2,7 +2,11 @@ package com.example.panweijie.tabbardemo;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.ContentResolver;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -17,7 +21,15 @@ import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+import com.example.panweijie.tabbardemo.util.OnRepay;
+import com.example.panweijie.tabbardemo.util.OnRepayCallback;
+import com.example.panweijie.tabbardemo.util.SystemAlbum;
+import com.example.panweijie.tabbardemo.util.XiaoMing;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener,OnRepay {
 
     private RadioGroup radioGroup;
     private Button btn_one;
@@ -30,6 +42,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private FindFragment mFind;
     private SettingFragment mSetting;
 
+    XiaoMing xiaoMing;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,8 +51,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bindViews();
         // 设置默认的Fragment
         setDefaultFragment();
-    }
 
+        SystemAlbum systemAlbum = SystemAlbum.getInstance();
+        Log.d("PHOTO","LIST:"+ systemAlbum.recentPhoto(this));
+        xiaoMing = new XiaoMing(this);
+
+    }
+    @Override
+    public boolean onRepay() {// 小明还钱的时候,小红接收, 返回true:收到了钱, 返回false:没收收到
+        Log.e("小红", "小红没有收到小明的还钱,可能被快递员私吞了...");
+        return true;
+    }
     private void bindFragment(){
 
     }
@@ -71,6 +94,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
+//        xiaoMing.JieQian();
+
+//        xiaoMing.JieQianCallback(new OnRepayCallback() {
+//        @Override
+//        boolean onRepayCallBack() {
+//            Log.e("小红", "小红收到小明的还钱10元...");
+//            return true;
+//        }
+//        });
+
         FragmentManager fm = getFragmentManager();
         // 开启Fragment事务
         FragmentTransaction transaction = fm.beginTransaction();
@@ -85,7 +118,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 // 使用当前Fragment的布局替代id_content的控件
                 transaction.replace(R.id.id_content, mWeixin);
-
                 Toast.makeText(getApplicationContext(), "rbChat",
                         Toast.LENGTH_SHORT).show();
                 break;
@@ -104,6 +136,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 {
                     mFind = new FindFragment();
                 }
+
                 transaction.replace(R.id.id_content, mFind);
 
                 Toast.makeText(getApplicationContext(), "rbFind",
@@ -114,6 +147,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 {
                     mSetting = new SettingFragment();
                 }
+
                 transaction.replace(R.id.id_content, mSetting);
 
                 Toast.makeText(getApplicationContext(), "rbMe",
@@ -139,6 +173,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        transaction.commit();
 //
 //    }
+
+
 
 
 }

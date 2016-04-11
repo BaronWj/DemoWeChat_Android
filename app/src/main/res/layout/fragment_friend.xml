@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
     <TextView
+        android:id="@+id/view"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="54dip"
+        android:text="通讯录"
+        android:textSize="23dp"
         android:gravity="center"
-        android:text="使用friend做主面板"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:background="#525513">
+    </TextView>
+    <ListView
+        android:id="@+id/friendlist"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+    </ListView>
 </LinearLayout>

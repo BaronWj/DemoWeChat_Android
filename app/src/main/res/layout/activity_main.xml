@@ -4,11 +4,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
 
-    <fragment
-    android:id="@+id/id_fragment_title"
-    android:name="com.example.panweijie.tabbardemo.TitleFragment"
-    android:layout_width="fill_parent"
-    android:layout_height="45dp" />
+
 
 
 
@@ -93,6 +89,6 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_above="@id/tab_menu"
-        android:layout_below="@id/id_fragment_title" />
+        />
 
 </RelativeLayout>
