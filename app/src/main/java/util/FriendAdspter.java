@@ -134,7 +134,7 @@ public class FriendAdspter extends BaseAdapter {
                     viewHolder = (ViewHolder) convertView.getTag();
                 }
 
-                Log.v("111=="+position,"滑动+"+(String)getItem(position));
+                Log.v("111=="+position,"滑动+"+ getItem(position));
                 // 绑定数据
 
                 viewHolder.content.setText((String)getItem(position));

@@ -4,11 +4,14 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -48,9 +51,27 @@ public class ContentFragment extends Fragment {
         mView = getActivity().getLayoutInflater().inflate(R.layout.fragment_content, null, false);
         listView = (ListView) mView.findViewById(R.id.listaa);
 //        mTitle = (View) mView.findViewById(R.id.content_title);
+        listView.setOnItemClickListener(new MyListenr());
         List<Map<String, Object>> list = getData();
         listView.setAdapter(new MyAdspter(mActivity, list));
 
+
+    }
+
+
+    class MyListenr implements AdapterView.OnItemClickListener{
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            Log.d("onItemClick",":"+parent+"view:"+view+"position:"+position+"id:"+id);
+            pushNextPage(position);
+        }
+    }
+
+    public void pushNextPage(int id){
+        Intent intent = new Intent();
+        intent.putExtra(DefineString.BOUNTKEY_CHAT,id);
+        intent.setClass(getActivity(),ChatPage.class);
+        startActivity(intent);
     }
 
 
@@ -70,6 +91,8 @@ public class ContentFragment extends Fragment {
         }
         return list;
     }
+
+
 
 //    protected void initViews(){
 //        mHeaderView = (HeaderView ) getView().findViewById(R.id.otherfeedlist_header);

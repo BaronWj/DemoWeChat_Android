@@ -33,7 +33,7 @@ public class HeaderView extends LinearLayout{
     private TextView mHtvSubTitle;
     private onLeftImageButtonClickListener mLeftImageButtonClickListener;
     public enum HeaderStyle {// 头部整体样式
-        DEFAULT_TITLE,TITLE_LIFT_IMAGEBUTTON,TITLE_RIGHT_IMAGEBUTTON, TITLE_DOUBLE_IMAGEBUTTON;
+        DEFAULT_TITLE,TITLE_LIFT_IMAGEBUTTON,TITLE_RIGHT_IMAGEBUTTON, TITLE_DOUBLE_IMAGEBUTTON
     }
     public HeaderView(Context context) {
         super(context);

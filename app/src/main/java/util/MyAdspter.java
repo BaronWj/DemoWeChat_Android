@@ -1,12 +1,15 @@
 package util;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.panweijie.tabbardemo.R;
@@ -26,6 +29,13 @@ public class MyAdspter extends BaseAdapter {
         this.data=data;
         this.layoutInflater=LayoutInflater.from(context);
     }
+
+
+
+
+    // ListView 中某项被选中后的逻辑
+
+
     /**
      * 组件集合，对应list.xml中的控件
      * @author Administrator
@@ -33,9 +43,11 @@ public class MyAdspter extends BaseAdapter {
     public final class Zujian{
         public ImageView image;
         public TextView title;
-        public Button view;
+        public TextView view;
         public TextView info;
     }
+
+
     @Override
     public int getCount() {
         return data.size();
@@ -64,7 +76,7 @@ public class MyAdspter extends BaseAdapter {
             convertView=layoutInflater.inflate(R.layout.list_chat, null);
             zujian.image=(ImageView)convertView.findViewById(R.id.image);
             zujian.title=(TextView)convertView.findViewById(R.id.title);
-            zujian.view=(Button)convertView.findViewById(R.id.view);
+            zujian.view=(TextView)convertView.findViewById(R.id.view);
             zujian.info=(TextView)convertView.findViewById(R.id.info);
             convertView.setTag(zujian);
         }else{
@@ -76,5 +88,6 @@ public class MyAdspter extends BaseAdapter {
         zujian.info.setText((String)data.get(position).get("info"));
         return convertView;
     }
+
 
 }
