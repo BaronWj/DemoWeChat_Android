@@ -75,7 +75,7 @@ public class FriendAdspter extends BaseAdapter {
     @Override
     public int getItemViewType(int position) {
         // 异常情况处理
-        if (null == mListData || position <  0|| position > getCount()) {
+        if (null == mListData || position <=  0|| position > getCount()) {
             return TYPE_ITEM;
         }
 
@@ -114,7 +114,6 @@ public class FriendAdspter extends BaseAdapter {
                 if (null == convertView) {
                     convertView = layoutInflater.inflate(R.layout.listview_item_header, null);
                 }
-
                 TextView textView = (TextView) convertView.findViewById(R.id.header);
                 String  itemValue = (String) getItem(position);
                 textView.setText( itemValue );

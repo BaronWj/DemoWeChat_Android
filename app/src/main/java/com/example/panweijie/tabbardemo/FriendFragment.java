@@ -28,10 +28,8 @@ public class FriendFragment extends Fragment{
     private ListView listView = null;
     private View mView;
     private Context mActivity = null;
-
     private List<String> listTag = new ArrayList<String>();
     private List<String> list = new ArrayList<String>();
-
     private FriendAdspter friendAdapter;
 
     @Override
@@ -40,15 +38,14 @@ public class FriendFragment extends Fragment{
     {
         return mView;
     }
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         mView = getActivity().getLayoutInflater().inflate(R.layout.fragment_friend, null, false);
         listView = (ListView) mView.findViewById(R.id.friendlist);
 //        List<Map<String, Object>> list = getData();
         ArrayList<FriendCategory> listData = getData();
         friendAdapter = new FriendAdspter(getActivity().getBaseContext(), listData);
-
         listView.setAdapter(friendAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -57,9 +54,7 @@ public class FriendFragment extends Fragment{
                         Toast.LENGTH_SHORT).show();
             }
         });
-
     }
-
 
     public void onAttach(Activity context) {
         super.onAttach(context);
@@ -71,33 +66,26 @@ public class FriendFragment extends Fragment{
      */
     private ArrayList<FriendCategory> getData() {
         ArrayList<FriendCategory> listData = new ArrayList<FriendCategory>();
-        FriendCategory categoryOne = new FriendCategory("路人甲");
-        categoryOne.addItem("马三立");
-        categoryOne.addItem("赵本山");
-        categoryOne.addItem("郭德纲");
-        categoryOne.addItem("周立波");
-        FriendCategory categoryTwo = new FriendCategory("事件乙");
-        categoryTwo.addItem("**贪污");
-        categoryTwo.addItem("**照门");
-        FriendCategory categoryThree = new FriendCategory("书籍丙");
-        categoryThree.addItem("10天学会***");
-        categoryThree.addItem("**大全");
-        categoryThree.addItem("**秘籍");
-        categoryThree.addItem("**宝典");
-        categoryThree.addItem("10天学会***");
-        categoryThree.addItem("10天学会***");
-        categoryThree.addItem("10天学会***");
-        categoryThree.addItem("10天学会***");
-        FriendCategory categoryFour = new FriendCategory("书籍丙");
-        categoryFour.addItem("河南");
-        categoryFour.addItem("天津");
-        categoryFour.addItem("北京");
-        categoryFour.addItem("上海");
-        categoryFour.addItem("广州");
-        categoryFour.addItem("湖北");
-        categoryFour.addItem("重庆");
-        categoryFour.addItem("山东");
-        categoryFour.addItem("陕西");
+        FriendCategory categoryOne = new FriendCategory("新朋友");
+        categoryOne.addItem("群聊");
+        categoryOne.addItem("标签");
+        categoryOne.addItem("公共号");
+        FriendCategory categoryTwo = new FriendCategory("A");
+        categoryTwo.addItem("A1");
+        categoryTwo.addItem("A2");
+        FriendCategory categoryThree = new FriendCategory("B");
+        categoryThree.addItem("B1");
+        categoryThree.addItem("B2");
+        categoryThree.addItem("B3");
+        categoryThree.addItem("B4");
+        FriendCategory categoryFour = new FriendCategory("C");
+        categoryFour.addItem("C1");
+        categoryFour.addItem("C2");
+        categoryFour.addItem("C3");
+        categoryFour.addItem("C4");
+        categoryFour.addItem("C5");
+        categoryFour.addItem("C6");
+
 
         listData.add(categoryOne);
         listData.add(categoryTwo);
