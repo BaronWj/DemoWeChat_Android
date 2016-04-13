@@ -52,8 +52,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // 设置默认的Fragment
         setDefaultFragment();
 
-        SystemAlbum systemAlbum = SystemAlbum.getInstance();
-        Log.d("PHOTO","LIST:"+ systemAlbum.recentPhoto(this));
+//        SystemAlbum systemAlbum = SystemAlbum.getInstance();
+//        Log.d("PHOTO","LIST:"+ systemAlbum.recentPhoto(this));
         xiaoMing = new XiaoMing(this);
 
     }
