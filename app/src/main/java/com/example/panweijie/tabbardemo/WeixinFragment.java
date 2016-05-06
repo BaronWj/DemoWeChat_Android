@@ -26,7 +26,7 @@ import util.MyAdspter;
 /**
  * Created by panweijie on 16/3/15.
  */
-public class WeixinFragment extends Fragment{
+public class WeixinFragment extends Fragment {
 //    private ListView listView=null;
 //
 //    @TargetApi(Build.VERSION_CODES.M)
@@ -36,8 +36,7 @@ public class WeixinFragment extends Fragment{
 //        return inflater.inflate(R.layout.fragment_weixin, container, false);
 
 
-
-    }
+}
 
 //    @Override
 //    public void onAttach(Activity activity) {

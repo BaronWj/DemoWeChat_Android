@@ -30,7 +30,7 @@ import util.MyAdspter;
 public class ContentFragment extends Fragment {
     private ListView listView = null;
     private View mView;
-    private HeaderView  mHeaderView;
+    private HeaderView mHeaderView;
 
 
     private Context mActivity = null;
@@ -43,6 +43,7 @@ public class ContentFragment extends Fragment {
         return mView;
 
     }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,18 +60,18 @@ public class ContentFragment extends Fragment {
     }
 
 
-    class MyListenr implements AdapterView.OnItemClickListener{
+    class MyListenr implements AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            Log.d("onItemClick",":"+parent+"view:"+view+"position:"+position+"id:"+id);
+            Log.d("onItemClick", ":" + parent + "view:" + view + "position:" + position + "id:" + id);
             pushNextPage(position);
         }
     }
 
-    public void pushNextPage(int id){
+    public void pushNextPage(int id) {
         Intent intent = new Intent();
-        intent.putExtra(DefineString.BOUNTKEY_CHAT,id);
-        intent.setClass(getActivity(),ChatPage.class);
+        intent.putExtra(DefineString.BOUNTKEY_CHAT, id);
+        intent.setClass(getActivity(), ChatPage.class);
         startActivity(intent);
     }
 
@@ -91,7 +92,6 @@ public class ContentFragment extends Fragment {
         }
         return list;
     }
-
 
 
 //    protected void initViews(){

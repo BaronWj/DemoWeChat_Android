@@ -36,33 +36,31 @@ public class FriendAdspter extends BaseAdapter {
     @Override
     public int getCount() {
         int count = 0;
-
         if (null != mListData) {
             //  所有分类中item的总和是ListVIew  Item的总个数
             for (FriendCategory category : mListData) {
                 count += category.getItemCount();
             }
         }
-         return count;
+        return count;
     }
 
     @Override
     public Object getItem(int position) {
 // 异常情况处理
-        if (null == mListData || position <  0|| position > getCount()) {
+        if (null == mListData || position < 0 || position > getCount()) {
             return null;
         }
 
         // 同一分类内，第一个元素的索引值
         int categroyFirstIndex = 0;
-
-        for ( FriendCategory friendCategory : mListData) {
+        for (FriendCategory friendCategory : mListData) {
             int size = friendCategory.getItemCount();
             // 在当前分类中的索引值
             int categoryIndex = position - categroyFirstIndex;
             // item在当前分类内
             if (categoryIndex < size) {
-                return  friendCategory.getItem(categoryIndex);
+                return friendCategory.getItem(categoryIndex);
             }
 
             // 索引移动到当前分类结尾，即下一个分类第一个元素索引
@@ -75,7 +73,7 @@ public class FriendAdspter extends BaseAdapter {
     @Override
     public int getItemViewType(int position) {
         // 异常情况处理
-        if (null == mListData || position <=  0|| position > getCount()) {
+        if (null == mListData || position <= 0 || position > getCount()) {
             return TYPE_ITEM;
         }
 
@@ -105,6 +103,7 @@ public class FriendAdspter extends BaseAdapter {
     public long getItemId(int position) {
         return position;
     }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
@@ -115,8 +114,8 @@ public class FriendAdspter extends BaseAdapter {
                     convertView = layoutInflater.inflate(R.layout.listview_item_header, null);
                 }
                 TextView textView = (TextView) convertView.findViewById(R.id.header);
-                String  itemValue = (String) getItem(position);
-                textView.setText( itemValue );
+                String itemValue = (String) getItem(position);
+                textView.setText(itemValue);
                 break;
 
             case TYPE_ITEM:
@@ -133,10 +132,10 @@ public class FriendAdspter extends BaseAdapter {
                     viewHolder = (ViewHolder) convertView.getTag();
                 }
 
-                Log.v("111=="+position,"滑动+"+ getItem(position));
+                Log.v("111==" + position, "滑动+" + getItem(position));
                 // 绑定数据
 
-                viewHolder.content.setText((String)getItem(position));
+                viewHolder.content.setText((String) getItem(position));
                 viewHolder.contentIcon.setImageResource(R.mipmap.ic_launcher);
                 break;
         }

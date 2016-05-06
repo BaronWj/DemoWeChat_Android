@@ -29,7 +29,7 @@ import com.example.panweijie.tabbardemo.util.XiaoMing;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener,OnRepay {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, OnRepay {
 
     private RadioGroup radioGroup;
     private Button btn_one;
@@ -57,17 +57,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         xiaoMing = new XiaoMing(this);
 
     }
+
     @Override
     public boolean onRepay() {// 小明还钱的时候,小红接收, 返回true:收到了钱, 返回false:没收收到
         Log.e("小红", "小红没有收到小明的还钱,可能被快递员私吞了...");
         return true;
     }
-    private void bindFragment(){
+
+    private void bindFragment() {
 
     }
 
-    private void setDefaultFragment()
-    {
+    private void setDefaultFragment() {
         FragmentManager fm = getFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
         mWeixin = new ContentFragment();
@@ -112,8 +113,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.rbChat:
 
-                if (mWeixin == null)
-                {
+                if (mWeixin == null) {
                     mWeixin = new ContentFragment();
                 }
                 // 使用当前Fragment的布局替代id_content的控件
@@ -123,8 +123,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.rbAddress:
 
-                if (mFriend == null)
-                {
+                if (mFriend == null) {
                     mFriend = new FriendFragment();
                 }
                 transaction.replace(R.id.id_content, mFriend);
@@ -132,8 +131,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         Toast.LENGTH_SHORT).show();
                 break;
             case R.id.rbFind:
-                if (mFind == null)
-                {
+                if (mFind == null) {
                     mFind = new FindFragment();
                 }
 
@@ -143,8 +141,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         Toast.LENGTH_SHORT).show();
                 break;
             case R.id.rbMe:
-                if (mSetting == null)
-                {
+                if (mSetting == null) {
                     mSetting = new SettingFragment();
                 }
 
@@ -173,8 +170,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        transaction.commit();
 //
 //    }
-
-
 
 
 }

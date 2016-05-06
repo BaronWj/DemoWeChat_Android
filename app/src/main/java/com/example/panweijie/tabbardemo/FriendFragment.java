@@ -23,7 +23,7 @@ import util.MyAdspter;
 /**
  * Created by panweijie on 16/3/15.
  */
-public class FriendFragment extends Fragment{
+public class FriendFragment extends Fragment {
 
     private ListView listView = null;
     private View mView;
@@ -34,8 +34,7 @@ public class FriendFragment extends Fragment{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState)
-    {
+                             Bundle savedInstanceState) {
         return mView;
     }
 
@@ -50,7 +49,7 @@ public class FriendFragment extends Fragment{
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getActivity().getBaseContext(),  (String)friendAdapter.getItem(position),
+                Toast.makeText(getActivity().getBaseContext(), (String) friendAdapter.getItem(position),
                         Toast.LENGTH_SHORT).show();
             }
         });
@@ -94,7 +93,6 @@ public class FriendFragment extends Fragment{
 
         return listData;
     }
-
 
 
 }

@@ -15,7 +15,7 @@ import android.widget.Toast;
 /**
  * Created by panweijie on 16/3/15.
  */
-public class HeaderView extends LinearLayout{
+public class HeaderView extends LinearLayout {
     private LayoutInflater mInflater;
     private View mHeader;
     private LinearLayout mLayoutLeftContainer;//HeaderView控件左侧容器
@@ -32,9 +32,11 @@ public class HeaderView extends LinearLayout{
     //左侧按钮监听接口
     private TextView mHtvSubTitle;
     private onLeftImageButtonClickListener mLeftImageButtonClickListener;
+
     public enum HeaderStyle {// 头部整体样式
-        DEFAULT_TITLE,TITLE_LIFT_IMAGEBUTTON,TITLE_RIGHT_IMAGEBUTTON, TITLE_DOUBLE_IMAGEBUTTON
+        DEFAULT_TITLE, TITLE_LIFT_IMAGEBUTTON, TITLE_RIGHT_IMAGEBUTTON, TITLE_DOUBLE_IMAGEBUTTON
     }
+
     public HeaderView(Context context) {
         super(context);
         init(context);
@@ -44,6 +46,7 @@ public class HeaderView extends LinearLayout{
         super(context, attrs);
         init(context);
     }
+
     //实现初始化，加载布局文件
     public void init(Context context) {
         mInflater = LayoutInflater.from(context);
@@ -51,16 +54,20 @@ public class HeaderView extends LinearLayout{
         addView(mHeader);
         initViews();
     }
+
     //初始化控件
-    public void initViews(){
+    public void initViews() {
         mLayoutLeftContainer
                 = (LinearLayout) findViewByHeaderId(R.id.header_layout_leftview_container);
         mLayoutRightContainer
-                =(LinearLayout)findViewByHeaderId(R.id.header_layout_rightview_container);
+                = (LinearLayout) findViewByHeaderId(R.id.header_layout_rightview_container);
         mHtvSubTitle = (TextView) findViewByHeaderId(R.id.header_htv_subtitle);
     }
+
     public View findViewByHeaderId(int id) {
-        return mHeader.findViewById(id);    }
+        return mHeader.findViewById(id);
+    }
+
     //设置控件样式
     public void initStyle(HeaderStyle hStyle) {
         switch (hStyle) {
@@ -93,13 +100,13 @@ public class HeaderView extends LinearLayout{
 
     // 左侧自定义按钮
     private void titleLeftImageButton() {
-        View mleftImageButtonView=
+        View mleftImageButtonView =
                 mInflater.inflate(R.layout.include_header_imagebutton, null);
         mLayoutLeftContainer.addView(mleftImageButtonView);
         mLayoutLeftImageButtonLayout =
-                (LinearLayout)mleftImageButtonView.findViewById(R.id.header_layout_imagebuttonlayout);
+                (LinearLayout) mleftImageButtonView.findViewById(R.id.header_layout_imagebuttonlayout);
         mLeftImageButton =
-                (ImageButton)mleftImageButtonView.findViewById(R.id.header_ib_imagebutton);
+                (ImageButton) mleftImageButtonView.findViewById(R.id.header_ib_imagebutton);
         mLayoutLeftImageButtonLayout.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View arg0) {
@@ -117,9 +124,9 @@ public class HeaderView extends LinearLayout{
                 = mInflater.inflate(R.layout.include_header_imagebutton, null);
         mLayoutRightContainer.addView(mRightImageButtonView);
         mLayoutRightImageButtonLayout =
-                (LinearLayout)mRightImageButtonView.findViewById(R.id.header_layout_imagebuttonlayout);
+                (LinearLayout) mRightImageButtonView.findViewById(R.id.header_layout_imagebuttonlayout);
         mRightImageButton =
-                (ImageButton)mRightImageButtonView.findViewById(R.id.header_ib_imagebutton);
+                (ImageButton) mRightImageButtonView.findViewById(R.id.header_ib_imagebutton);
         mLayoutRightImageButtonLayout.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View arg0) {
@@ -140,6 +147,7 @@ public class HeaderView extends LinearLayout{
             mHtvSubTitle.setVisibility(View.GONE);
         }
     }
+
     //重要目的是设置右侧按钮侦听接的实现类，还包括了标题文本、按钮图片
     public void setTitleAndRightImageButton(CharSequence title, int id,
                                             onRightImageButtonClickListener onRightImageButtonClickListener) {
@@ -149,6 +157,7 @@ public class HeaderView extends LinearLayout{
             setOnRightImageButtonClickListener(onRightImageButtonClickListener);
         }
     }
+
     //重要目的是左侧按钮设置侦听接的实现类还包，括了标题文本、按钮图片
     public void setTitleAndLeftImageButton(CharSequence title, int id,
                                            onLeftImageButtonClickListener listener) {
@@ -163,15 +172,17 @@ public class HeaderView extends LinearLayout{
             onRightImageButtonClickListener listener) {
         mRightImageButtonClickListener = listener;
     }
+
     //设置右侧按钮监听接口
     public interface onRightImageButtonClickListener {
         void onClick();
     }
 
     public void setOnLeftImageButtonClickListener(
-            onLeftImageButtonClickListener  listener) {
+            onLeftImageButtonClickListener listener) {
         mLeftImageButtonClickListener = listener;
     }
+
     //设置左侧按钮监听接口
     public interface onLeftImageButtonClickListener {
         void onClick();
